@@ -1,0 +1,40 @@
+{
+  "name": "autosolo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "jest --watch --runInBand --detectOpenHandles",
+    "test:ci": "jest --coverage --runInBand --detectOpenHandles",
+    "lint": "./node_modules/.bin/eslint --fix --ext .js ./",
+    "lint:ci": "./node_modules/.bin/eslint --ext .js ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mabware/autosolo-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mabware/autosolo-api/issues"
+  },
+  "homepage": "https://github.com/mabware/autosolo-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "nodemon": "^2.0.6"
+  }
+}

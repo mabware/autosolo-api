@@ -1,0 +1,228 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Autosolo API"
+basePath: "/"
+schemes:
+- "http"
+paths:
+  /events:
+    get:
+      tags:
+      - "events"
+      summary: "Retrieve an array of all existing events"
+      description: ""
+      operationId: "getEvents"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "404":
+          description: "Event could not be found"
+    put:
+      tags:
+      - "events"
+      summary: "Upsert an Event"
+      description: ""
+      operationId: "updateEvent"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Event object"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      responses:
+        "200":
+          description: "Event created/updated"
+  /events/{eventId}:
+    parameters:
+      - in: "path"
+        name: "eventId"
+        type: "string"
+        minLength: 12
+        maxLength: 12
+        description: "Event id"
+        required: true
+    get:
+      tags:
+      - "events"
+      summary: "Retrieve an array of all existing events"
+      description: ""
+      operationId: "getEvent"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        "404":
+          description: "Event could not be found"
+    delete:
+      tags:
+      - "events"
+      summary: "Delete an existing Event"
+      description: ""
+      operationId: "deleteEvent"
+      responses:
+        "200":
+          description: "Event deleted"
+        "404":
+          description: "Event could not be found"
+  /events/{eventId}/drivers:
+    parameters:
+      - in: "path"
+        name: "eventId"
+        type: "string"
+        minLength: 12
+        maxLength: 12
+        description: "Event id"
+        required: true
+    get:
+      tags:
+      - "drivers"
+      summary: "Retrieve an array of all existing events"
+      description: ""
+      operationId: "getDrivers"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Driver"
+        "404":
+          description: "Driver or Event could not be found"
+    put:
+      tags:
+      - "drivers"
+      summary: "Upsert a Driver"
+      description: ""
+      operationId: "updateDriver"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Driver object"
+        required: true
+        schema:
+          $ref: "#/definitions/Driver"
+      responses:
+        "200":
+          description: "Driver created/updated"
+  /events/{eventId}/drivers/{driverId}:
+    parameters:
+      - in: "path"
+        name: "eventId"
+        type: "string"
+        minLength: 12
+        maxLength: 12
+        description: "Event id"
+        required: true
+      - in: "path"
+        name: "driverId"
+        type: "string"
+        minLength: 12
+        maxLength: 12
+        description: "Driver id"
+        required: true
+    delete:
+      tags:
+      - "drivers"
+      summary: "Delete an existing Event"
+      description: ""
+      operationId: "deleteDriver"
+      responses:
+        "200":
+          description: "Event deleted"
+        "404":
+          description: "Event could not be found"
+definitions:
+  Event:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        minLength: 12
+        maxLength: 12
+      name:
+        type: "string"
+        example: "Westonzoyland"
+      config:
+        type: "object"
+        additionalProperties: {}
+        properties:
+          1 : 
+            type: "object"
+            properties:
+              runs:
+                type: integer
+                example: 3
+              toCount:
+                type: integer
+                example: 2
+  Driver:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        minLength: 12
+        maxLength: 12
+      name:
+        type: "string"
+        example: "Joe Bloggs"
+      number:
+        type: "string"
+        example: "123"
+      group:
+        type: "string"
+        example: "1"
+      class:
+        type: "string"
+        example: "B"
+      times:
+        type: "object"
+        description: "Object holding times for each course, key is the course number"
+        additionalProperties: {}
+        properties:
+          1 : 
+            type: "object"
+            description: "Object holding times for each run, key is the run number"
+            additionalProperties: {}
+            properties:
+              1:
+                type: number
+                example: 52.1
+              total:
+                type: integer
+                example: 52.1
+          total:
+            type: number
+            example: 385.5
+
+              
+              
+            
+              

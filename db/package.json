@@ -1,0 +1,14 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "./node_modules/.bin/migrate-mongo up"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "migrate-mongo": "^6.0.1"
+  }
+}
